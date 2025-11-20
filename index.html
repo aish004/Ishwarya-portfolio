@@ -3,135 +3,293 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aishwarya Salendra | Backend Developer</title>
+  <title>Aishwarya Salendra | Backend Developer Portfolio</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0e1a2b;
-      color: #e0e0e0;
-      line-height: 1.6;
+      font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #101820 0%, #2a4773 100%);
+      color: #f1f1f1;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-    header {
-      background-color: #1c2a3a;
-      padding: 2rem;
-      text-align: center;
+    .sidebar {
+      width: 270px;
+      padding: 3rem 2rem;
+      background: rgba(10,24,42,0.96);
+      box-shadow: 2px 0 12px #00000020;
+      position: fixed;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
     }
-    header img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
+    .sidebar img {
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      border: 4px solid #4f90c6;
+      border: 3px solid #73a4e6;
+      margin-bottom: 1rem;
     }
-    h1, h2 {
-      color: #4f90c6;
+    .sidebar h1 {
+      font-size: 1.8rem;
+      margin: 0.5rem 0;
+      color: #8ed6fb;
+      letter-spacing: 2px;
+    }
+    .sidebar p {
+      font-size: 1.05rem;
+      color: #d1d1d1;
+      margin-bottom: 0.6rem;
+    }
+    .nav-links {
+      margin: 2.2rem 0 0 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .nav-links a {
+      color: #8ed6fb;
+      background: #1b2c48;
+      padding: 0.7rem 1rem;
+      border-radius: 25px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: background 0.19s;
+    }
+    .nav-links a:hover {
+      background: #3265a2;
+      color: #fff;
     }
     .container {
-      padding: 2rem 4rem;
+      margin-left: 300px;
+      padding: 2.5rem 6vw 2.5rem 0;
+      min-width: 0;
+      max-width: 900px;
+      width: 100%;
     }
-    .section {
-      margin-bottom: 3rem;
+    .hero {
+      margin-bottom: 2rem;
     }
-    .project, .simulation {
-      background-color: #192635;
-      padding: 1rem;
-      border-left: 4px solid #4f90c6;
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: #f8faff;
+      margin-bottom: 0.6rem;
+      letter-spacing: 1.5px;
+    }
+    .hero-sub {
+      color: #8ed6fb;
+      font-size: 1.2rem;
+    }
+    .about, .section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      color: #73a4e6;
+      font-size: 1.2rem;
+      border-left: 4px solid #8ed6fb;
+      padding-left: 0.7rem;
+      text-transform: uppercase;
       margin-bottom: 1rem;
-      border-radius: 5px;
+      letter-spacing: 1px;
     }
-    a {
-      color: #77b5ff;
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+    }
+    .project-card {
+      background: linear-gradient(110deg, #233857 78%, #314569 100%);
+      border-radius: 8px;
+      padding: 1.2rem 1rem;
+      box-shadow: 0 2px 10px #00000023;
+      position: relative;
+      transition: box-shadow 0.2s, transform 0.2s;
+      min-height: 170px;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 22px #8ed6fb65;
+      transform: scale(1.035) translateY(-3px);
+    }
+    .project-title {
+      color: #8ed6fb;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    .project-stack {
+      font-size: 0.98rem;
+      color: #ffd687;
+      margin-bottom: 0.3rem;
+    }
+    .project-desc {
+      color: #d4e8fc;
+      font-size: 0.98rem;
+    }
+    .badges {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .badge {
+      background: #395c8d;
+      color: #ffe6ae;
+      border-radius: 13px;
+      padding: 0.28em 0.7em;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+    .achievements, .skills-list {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+    }
+    .achieve-card, .skill-card {
+      background: #16325c;
+      color: #fed683;
+      border-radius: 11px;
+      padding: 1rem 1.2rem;
+      min-width: 160px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 10px #00000021;
+      font-weight: bold;
+      font-size: 1em;
+      transition: background 0.18s;
+    }
+    .achieve-card:hover, .skill-card:hover {
+      background: #214176;
+      color: #fff4d3;
+    }
+    .contact-section a {
+      color: #9fdaff;
       text-decoration: none;
+      font-weight: bold;
+      padding: 0.12rem 0.3rem;
+      border-radius: 5px;
+      transition: background .14s;
     }
-    a:hover {
-      text-decoration: underline;
+    .contact-section a:hover {
+      color: #fff;
+      background: #3969b3;
     }
-    footer {
-      background: #1c2a3a;
-      color: #bbb;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
+    @media (max-width: 800px) {
+      .container { margin-left: 0; padding: 2rem 0.5rem; }
+      .sidebar { position: static; width: 100vw; height: auto; flex-direction: row; justify-content: space-between; }
+      .projects { grid-template-columns: 1fr; }
+      .achievements, .skills-list { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="portfolio.jpg" alt="Aishwarya Salendra">
+  <nav class="sidebar">
+    <img src="portfolio.jpg" alt="Aishwarya Salendra profile">
     <h1>Aishwarya Salendra</h1>
-    <p>Backend Developer | SQL Specialist | Problem Solver</p>
-  </header>
-
-  <div class="container">
-    <section class="section">
+    <p>Backend Developer &<br> SQL Specialist</p>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-title">Hi, I'm Aishwarya Salendra</div>
+      <div class="hero-sub">Building robust, scalable backends and creative solutions for impactful products.</div>
+    </section>
+    <section class="about" id="about">
       <h2>About Me</h2>
-      <p>BTech student in Information Technology, passionate about backend development, database design, and performance optimization. I love crafting secure, scalable, and maintainable systems, using tools like Python, SQL, REST APIs, and Spring Boot. I approach challenges with curiosity and solve them with clean code and collaboration.</p>
-    </section>
-
-    <section class="section">
-      <h2>Projects</h2>
-      <div class="project">
-        <strong>Real-Time Hand Gesture Recognition System</strong><br/>
-        Python, OpenCV, HTML, JavaScript<br/>
-        Developed a multithreaded system with near-zero lag; validated across 40+ test cases.
-      </div>
-      <div class="project">
-        <strong>Heart Disease Prediction Tool</strong><br/>
-        Python, SQL, REST API, JavaScript<br/>
-        Built a backend API to assess cardiac risk in real time; improved response time by 25%.
-      </div>
-      <div class="project">
-        <strong>Secure Blog Web Application</strong><br/>
-        Python, HTML<br/>
-        Built a full-stack secure blog with user auth and dynamic content.
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Job Simulations</h2>
-      <div class="simulation">
-        <strong>AWS Solutions Architecture – Forage</strong><br/>
-        Designed scalable hosting architecture with security and cost optimization in mind.
-      </div>
-      <div class="simulation">
-        <strong>GenAI Data Analytics – TATA Forage</strong><br/>
-        Conducted EDA, predicted delinquency using AI, created business strategy reports.
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Certifications</h2>
-      <ul>
-        <li>Smart Interviews – Python & SQL</li>
-        <li>Infosys Springboard – Power BI</li>
-        <li>Google Cloud – Cloud Engineer & Data Analytics</li>
-        <li>TATA IQ – GenAI Data Analytics</li>
-        <li>NPTEL – Computer Graphics, English Communication</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Skills</h2>
-      <ul>
-        <li><strong>Languages:</strong> Python, C/C++, SQL, HTML</li>
-        <li><strong>Frameworks:</strong> Spring Boot, REST APIs</li>
-        <li><strong>Databases:</strong> MySQL, MongoDB</li>
-        <li><strong>Tools:</strong> Git, VS Code, Postman</li>
-        <li><strong>Concepts:</strong> Multithreading, OOP, Secure Coding, API Design</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:aishwaryasalendra@gmail.com">aishwaryasalendra@gmail.com</a><br>
-         LinkedIn: <a href="https://www.linkedin.com/in/aishwarya-salendra-12772b227/">linkedin.com/in/aishwarya-salendra</a>
+      <p>
+       B.Tech Information Technology student with a focus on backend development, database design, and performance optimization. Skilled in Python, SQL, and REST APIs, with experience delivering secure, scalable projects. Certified in logic, analytics, and cloud tools, and passionate about solving problems with clean, maintainable code
       </p>
     </section>
-  </div>
-
-  <footer>
-    © 2025 Aishwarya Salendra. All rights reserved.
-  </footer>
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <div class="project-title">Real-Time Hand Gesture Recognition</div>
+          <div class="project-stack">Python, OpenCV, HTML, JavaScript</div>
+          <div class="project-desc">
+            Engineered a multithreaded gesture recognition pipeline with <span class="badge">0-lag</span> response across 40+ test cases. Delivered seamless real-time feedback.
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Heart Disease Prediction API</div>
+          <div class="project-stack">Python, SQL, REST API, JavaScript</div>
+          <div class="project-desc">
+            Developed a scalable backend for real-time cardiac risk scoring, optimizing query speed by 25%. Ensured privacy and data integrity.
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Secure Blog Web App</div>
+          <div class="project-stack">Python, HTML</div>
+          <div class="project-desc">
+            Created an end-to-end blogging platform with secure authentication and dynamic post management. Prioritised robustness and clean code.
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">AWS Solutions Architecture (Simulation)</div>
+          <div class="project-stack">AWS, Forage</div>
+          <div class="project-desc">
+            Designed scalable hosting solution balancing <span class="badge">cost</span> and <span class="badge">security</span>. Simulated production scenario for performance validation.
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">GenAI Data Analytics (Simulation)</div>
+          <div class="project-stack">GenAI, Data Analytics, TATA Forage</div>
+          <div class="project-desc">
+            Executed advanced EDA and predictive modeling, delivering concise business insight reports for executive use cases.
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="achievements">
+      <h2>Achievements & Certifications</h2>
+      <div class="achievements">
+        <div class="achieve-card">Smart Interviews – Python & SQL</div>
+        <div class="achieve-card">Infosys Springboard – Power BI</div>
+        <div class="achieve-card">Google Cloud – Cloud Engineer/Data Analytics</div>
+        <div class="achieve-card">TATA IQ – GenAI Data Analytics</div>
+        <div class="achieve-card">NPTEL – Computer Graphics</div>
+        <div class="achieve-card">NPTEL – English Communication</div>
+      </div>
+    </section>
+    <section class="section" id="skills">
+      <h2>Skills & Tools</h2>
+      <div class="skills-list">
+        <div class="skill-card">Python</div>
+        <div class="skill-card">C/C++</div>
+        <div class="skill-card">SQL / MySQL</div>
+        <div class="skill-card">HTML</div>
+        <div class="skill-card">REST APIs</div>
+        <div class="skill-card">Spring Boot</div>
+        <div class="skill-card">MongoDB</div>
+        <div class="skill-card">Git & VS Code</div>
+        <div class="skill-card">Postman</div>
+        <div class="skill-card">OOP</div>
+        <div class="skill-card">Multithreading</div>
+        <div class="skill-card">Secure Coding</div>
+        <div class="skill-card">API Design</div>
+      </div>
+    </section>
+    <section class="section contact-section" id="contact">
+      <h2>Contact</h2>
+      <div>
+        Email: <a href="mailto:aishwaryasalendra@gmail.com">aishwaryasalendra@gmail.com</a><br>
+        LinkedIn: <a href="https://www.linkedin.com/in/aishwarya-salendra-12772b227/">aishwarya-salendra</a>
+      </div>
+    </section>
+    <footer style="text-align:center; color:#bfcbe4; padding:1.2rem 0 0.7rem 0; font-size:1rem;">
+      &copy; 2025 Aishwarya Salendra. Crafted with care ✦ All rights reserved.
+    </footer>
+  </main>
 </body>
 </html>
